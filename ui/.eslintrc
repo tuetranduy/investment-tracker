@@ -1,0 +1,35 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "extends": [
+    "react-app",
+    "prettier"
+  ],
+  "plugins": [
+    "react",
+    "prettier"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2018
+  },
+  "rules": {
+    "prettier/prettier": [
+      "warn",
+      {
+        "arrowParens": "always",
+        "semi": true,
+        "trailingComma": "es5",
+        "endOfLine": "lf",
+        "singleQuote": true,
+        "tabWidth": 2,
+        "printWidth": 80,
+        "useTabs": false
+      }
+    ],
+    "no-console": "warn",
+    "react/require-default-props": "off",
+    "react/forbid-prop-types": "off"
+  }
+}

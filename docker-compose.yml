@@ -1,0 +1,38 @@
+version: '3.8'
+services:
+  api:
+    build: /api
+    image: tuetranduy/qlptgt
+    ports:
+      - "3001:3001"
+    depends_on:
+      db:
+        condition: service_healthy
+    command: [sh, -c, "npm start"]
+    environment:
+      - DB_HOST=db
+    networks: 
+      - qlptgt
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      - MYSQL_DATABASE=qlptgt-db
+      - MYSQL_ROOT_PASSWORD=Password@123
+    ports:
+      - '3306:3306'
+    volumes:
+      - db:/var/lib/mysql
+    healthcheck:
+      test: "/usr/bin/mysql --user=root --password=$$MYSQL_ROOT_PASSWORD --execute \"SHOW DATABASES;\""
+      interval: 10s
+      timeout: 600s
+      retries: 30
+    networks: 
+      - qlptgt
+
+volumes:
+  db:
+
+networks: 
+  qlptgt:

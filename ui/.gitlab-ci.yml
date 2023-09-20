@@ -1,0 +1,25 @@
+image: node:10.21.0
+
+cache:
+  paths:
+    - node_modules/
+
+before_script:
+  - apt-get update -qq && apt-get install -y -qq sshpass rsync
+
+deploy_production:
+  only:
+    refs:
+      - master
+  stage: deploy
+  environment: Production
+  script:
+    - export REACT_APP_API_URL=$REACT_APP_API_URL
+    - export REACT_APP_SECRET_KEY=$REACT_APP_SECRET_KEY
+    - npm install
+    - CI='' npm run build
+    - cd build/
+    - ls
+    - sshpass -V
+    - export SSHPASS=$USER_PASS
+    - sshpass -e rsync -r --omit-dir-times -e "ssh -o StrictHostKeyChecking=no" . deploy@$DEPLOY_SERVER:/var/www/hvphong_fe_admin/
