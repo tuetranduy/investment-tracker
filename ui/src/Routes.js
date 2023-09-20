@@ -28,16 +28,6 @@ const routesConfig = [
         component: lazy(() => import('src/screens/Dashboard')),
       },
       {
-        exact: true,
-        path: '/admin/product-type-management',
-        component: lazy(() => import('src/screens/ProductTypeManagement')),
-      },
-      {
-        exact: true,
-        path: '/admin/user-management',
-        component: lazy(() => import('src/screens/UserManagement')),
-      },
-      {
         component: () => <Redirect to="/404" />,
       },
     ],
