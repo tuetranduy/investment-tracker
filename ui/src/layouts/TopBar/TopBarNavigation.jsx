@@ -17,7 +17,7 @@ import { logout } from 'src/actions/accountActions';
 const useStyles = makeStyles((theme) => ({
   root: {
     zIndex: theme.zIndex.drawer + 100,
-    backgroundColor: '#264653',
+    backgroundColor: '#213555',
   },
   toolbar: {
     minHeight: 64,

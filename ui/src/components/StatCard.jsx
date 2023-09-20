@@ -8,6 +8,7 @@ import { Box } from '@material-ui/core';
 const useStyles = makeStyles({
   root: {
     minWidth: 275,
+    backgroundColor: '#F0F0F0',
   },
   title: {
     fontSize: 25,
@@ -25,9 +26,7 @@ export default function StatCard({ title, icon }) {
     <Card className={classes.root} variant="outlined">
       <CardContent>
         <Box>
-          <Typography color="textSecondary" gutterBottom>
-            {title}
-          </Typography>
+          <Typography color="textSecondary">{title}</Typography>
           <Typography className={classes.title}>100%</Typography>
         </Box>
         <Box className={classes.content}>{icon}</Box>

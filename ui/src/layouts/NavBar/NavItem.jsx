@@ -10,25 +10,25 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'flex-start',
     textTransform: 'none',
     letterSpacing: 0,
-    width: '100%'
+    width: '100%',
   },
   icon: {
     display: 'flex',
     alignItems: 'center',
-    marginRight: theme.spacing(1)
+    marginRight: theme.spacing(1),
   },
   title: {
-    marginRight: 'auto'
+    marginRight: 'auto',
   },
   active: {
-    color: '#e63946',
+    color: '#4F709C',
     '& $title': {
-      fontWeight: theme.typography.fontWeightBold
+      fontWeight: theme.typography.fontWeightBold,
     },
     '& $icon': {
-      color: '#e63946'
-    }
-  }
+      color: '#4F709C',
+    },
+  },
 }));
 
 function NavItem({ icon: Icon, title, href }) {

@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
     maxWidth: 300,
-    backgroundColor: '#f1faee',
+    backgroundColor: '#F0F0F0',
   },
   desktopDrawer: {
     width: 256,

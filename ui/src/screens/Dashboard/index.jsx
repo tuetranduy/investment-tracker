@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import StatCard from 'src/components/StatCard';
 import TrendingUpIcon from '@material-ui/icons/TrendingUp';
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
+import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,9 +30,18 @@ function Dashboard() {
       <Grid container spacing={3} className={classes.container}>
         <Grid item lg={4}>
           <StatCard
-            title="Total Investment Amount"
+            title="Total Investment Capital"
             icon={
-              <MonetizationOnIcon style={{ fontSize: 50, color: 'green' }} />
+              <MonetizationOnIcon style={{ fontSize: 50, color: '#4F709C' }} />
+            }
+          />
+        </Grid>
+
+        <Grid item lg={4}>
+          <StatCard
+            title="Current Capital"
+            icon={
+              <AccountBalanceIcon style={{ fontSize: 50, color: '#4F709C' }} />
             }
           />
         </Grid>
@@ -39,7 +49,7 @@ function Dashboard() {
         <Grid item lg={4}>
           <StatCard
             title="Revenue"
-            icon={<TrendingUpIcon style={{ fontSize: 50, color: 'green' }} />}
+            icon={<TrendingUpIcon style={{ fontSize: 50, color: '#4F709C' }} />}
           />
         </Grid>
       </Grid>
