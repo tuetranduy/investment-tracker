@@ -1,13 +1,20 @@
-import { Box, Button, Container, Grid, makeStyles } from '@material-ui/core';
+import { Container, Grid, makeStyles } from '@material-ui/core';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import StatCard from 'src/components/StatCard';
+import TrendingUpIcon from '@material-ui/icons/TrendingUp';
+import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     minHeight: '100%',
     paddingTop: theme.spacing(9),
     paddingBottom: theme.spacing(3),
+  },
+
+  container: {
+    paddingTop: 15,
+    justifyContent: 'center',
   },
 }));
 
@@ -19,23 +26,21 @@ function Dashboard() {
 
   return (
     <Container className={classes.root} maxWidth="lg">
-      <Box mt={3} mb={3}>
-        <Button color="primary" variant="outlined">
-          Add investment
-        </Button>
-      </Box>
-
-      <Grid container spacing={3}>
-        <Grid item lg={3}>
-          <StatCard />
+      <Grid container spacing={3} className={classes.container}>
+        <Grid item lg={4}>
+          <StatCard
+            title="Total Investment Amount"
+            icon={
+              <MonetizationOnIcon style={{ fontSize: 50, color: 'green' }} />
+            }
+          />
         </Grid>
 
-        <Grid item lg={3}>
-          <StatCard />
-        </Grid>
-
-        <Grid item lg={3}>
-          <StatCard />
+        <Grid item lg={4}>
+          <StatCard
+            title="Revenue"
+            icon={<TrendingUpIcon style={{ fontSize: 50, color: 'green' }} />}
+          />
         </Grid>
       </Grid>
     </Container>
