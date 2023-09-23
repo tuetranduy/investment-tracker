@@ -3,9 +3,10 @@ const { SECRET_KEY } = require('../config/index');
 
 function verifyToken(req, res, next) {
     let token = req.headers['access_token'] ? req.headers['access_token'].toString() : undefined;
-    console.log("verifyToken -> token", token)
-    if (!token)
+    console.log('verifyToken -> token', token);
+    if (!token) {
         return res.status(403).send({ success: false, message: 'Access Denied for this request' });
+    }
 
     jwt.verify(token, SECRET_KEY, function (err, decoded) {
         if (err) {
@@ -14,7 +15,6 @@ function verifyToken(req, res, next) {
 
         // if everything good, save to request for use in other routes
         req.userId = decoded.id;
-        req.roleId = decoded.role;
         next();
     });
 }
