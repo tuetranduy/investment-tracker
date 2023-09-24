@@ -10,6 +10,8 @@ const errorController = require('./controllers/error-controller');
 const sequelize = require('./util/database');
 
 const userRoutes = require('./routes/user');
+const investmentRoutes = require('./routes/investment-type');
+const apiInformationRoutes = require('./routes/api-information');
 
 const { strategy } = require('./middlewares/passportMiddleware');
 
@@ -20,6 +22,7 @@ const { exec } = require('child_process');
 
 const InvestmentType = require('./models/investment-type');
 const InvestmentDetail = require('./models/investment-detail');
+const ApiInformation = require('./models/api-information');
 
 const app = express();
 
@@ -36,6 +39,8 @@ passport.use(strategy);
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(userRoutes);
+app.use(investmentRoutes);
+app.use(apiInformationRoutes);
 app.use(errorController);
 
 InvestmentDetail.belongsTo(InvestmentType);

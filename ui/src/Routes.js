@@ -28,6 +28,20 @@ const routesConfig = [
         component: lazy(() => import('src/screens/Dashboard')),
       },
       {
+        exact: true,
+        path: '/investment-type-management',
+        component: lazy(() =>
+          import('src/screens/ManagementModules/InvestmentTypeManagement')
+        ),
+      },
+      {
+        exact: true,
+        path: '/api-key-management',
+        component: lazy(() =>
+          import('src/screens/ManagementModules/ApiKeyManagement')
+        ),
+      },
+      {
         component: () => <Redirect to="/404" />,
       },
     ],

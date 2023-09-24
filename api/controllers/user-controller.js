@@ -9,11 +9,10 @@ const {
     OLD_PASSWORD_INCORRECT,
     INSUFFICIENT_PERMISSION_MESSAGE,
 } = require('../constants/messages');
-const { ADMIN, USER } = require('../constants/roles');
 
 exports.getAllUsers = (req, res, next) => {
     let query = {
-        attributes: ['id', 'name', 'username', 'role_id', 'isActive'],
+        attributes: ['id', 'name', 'username', 'isActive'],
     };
 
     User.findAll(query).then((users) => {
@@ -28,7 +27,7 @@ exports.createUser = (req, res, next) => {
 
     User.count({ where: { username: username } }).then((result) => {
         if (result > 0) {
-            return res.send({
+            return res.status(401).json({
                 success: false,
                 message: 'Username is existed',
             });

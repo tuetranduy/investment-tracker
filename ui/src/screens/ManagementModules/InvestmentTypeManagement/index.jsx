@@ -2,8 +2,8 @@ import { Box, Container, makeStyles } from '@material-ui/core';
 import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import ApiKeyManagementForm from './ApiKeyManagementForm';
-import { getApiInformations } from 'src/actions/apiInformationActions';
+import { getInvestmentTypes } from 'src/actions/investmentTypeAction';
+import InvestmentTypeManagementForm from './InvestmentTypeManagementForm';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -13,21 +13,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ApiKeyManagement() {
+function InvestmentTypeManagement() {
   const classes = useStyles();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getApiInformations());
+    dispatch(getInvestmentTypes());
   }, [dispatch]);
 
   return (
     <Container className={classes.root} maxWidth="lg">
       <Box mt={3}>
-        <ApiKeyManagementForm />
+        <InvestmentTypeManagementForm />
       </Box>
     </Container>
   );
 }
 
-export default ApiKeyManagement;
+export default InvestmentTypeManagement;
