@@ -12,6 +12,7 @@ const sequelize = require('./util/database');
 const userRoutes = require('./routes/user');
 const investmentRoutes = require('./routes/investment-type');
 const apiInformationRoutes = require('./routes/api-information');
+const binanceRoutes = require('./routes/binance-routes');
 
 const { strategy } = require('./middlewares/passportMiddleware');
 
@@ -41,6 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(userRoutes);
 app.use(investmentRoutes);
 app.use(apiInformationRoutes);
+app.use('/binance', binanceRoutes);
 app.use(errorController);
 
 InvestmentDetail.belongsTo(InvestmentType);

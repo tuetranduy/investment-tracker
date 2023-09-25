@@ -1,10 +1,11 @@
 import { Container, Grid, makeStyles } from '@material-ui/core';
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import StatCard from 'src/components/StatCard';
 import TrendingUpIcon from '@material-ui/icons/TrendingUp';
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
+import { getBinanceBalance } from 'src/actions/balanceActions';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,7 +24,11 @@ function Dashboard() {
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  useEffect(() => {}, [dispatch]);
+  useEffect(async () => {
+    dispatch(getBinanceBalance());
+  }, [dispatch]);
+
+  const { binanceBalance } = useSelector((state) => state.balance);
 
   return (
     <Container className={classes.root} maxWidth="lg">
@@ -43,6 +48,7 @@ function Dashboard() {
             icon={
               <AccountBalanceIcon style={{ fontSize: 50, color: '#4F709C' }} />
             }
+            value={binanceBalance}
           />
         </Grid>
 

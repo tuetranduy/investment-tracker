@@ -19,7 +19,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function StatCard({ title, icon }) {
+export default function StatCard({ title, icon, value }) {
   const classes = useStyles();
 
   return (
@@ -27,7 +27,7 @@ export default function StatCard({ title, icon }) {
       <CardContent>
         <Box>
           <Typography color="textSecondary">{title}</Typography>
-          <Typography className={classes.title}>100%</Typography>
+          <Typography className={classes.title}>{value} USDT</Typography>
         </Box>
         <Box className={classes.content}>{icon}</Box>
       </CardContent>
